@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="pomodoro">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <link rel="stylesheet" href="./styles/main.css">
+  <!-- used fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&family=Roboto+Slab:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <!--  -->
+  <title>Frontend Mentor | Pomodoro app</title>
+</head>
+<body  class="font1">
+    <main>
+        <h1 class="pomodoroLogo">
+          pomodoro
+        </h1>
+        <div class="pomodoroBreaks">
+            <button name="pomodoro" class="active color1">pomodoro</button>
+            <button name="shortBreak" class="idle color1">short break</button>
+            <button name="longBreak" class="idle color1">long break</button>
+        </div>
+        <div class="outerCircle">
+              <div class="middleCirlce">
+
+                  <div class="innerCircle">
+                      <p class="pomodoroTimer">
+                        <span class="minutes">30</span>:<span class="seconds">00</span>
+                      </p>
+                      <p class="pomodoroController">
+                          Start
+                      </p>
+                      <svg>
+                        <circle class="progressCircle color1"  cx="50%" cy="50%" r="calc(50% - 5px)" fill="transparent"  />
+                      </svg>
+                  </div>
+
+           
+              </div>
+        </div>
+        <svg>
+          <path  d="M26.965 17.682l-2.927-2.317c.055-.448.097-.903.097-1.365 0-.462-.042-.917-.097-1.365l2.934-2.317a.702.702 0 00.167-.896l-2.775-4.851a.683.683 0 00-.847-.301l-3.454 1.407a10.506 10.506 0 00-2.345-1.379l-.52-3.71A.716.716 0 0016.503 0h-5.55a.703.703 0 00-.687.588l-.52 3.71c-.847.357-1.63.819-2.345 1.379L3.947 4.27a.691.691 0 00-.847.301L.325 9.422a.705.705 0 00.167.896l2.927 2.317c-.055.448-.097.903-.097 1.365 0 .462.042.917.097 1.365L.492 17.682a.702.702 0 00-.167.896L3.1 23.429a.683.683 0 00.847.301L7.4 22.323a10.506 10.506 0 002.345 1.379l.52 3.71c.056.329.34.588.687.588h5.55a.703.703 0 00.687-.588l.52-3.71c.847-.357 1.631-.819 2.346-1.379l3.454 1.407c.313.119.673 0 .847-.301l2.775-4.851a.705.705 0 00-.167-.896zM13.73 18.9c-2.685 0-4.857-2.191-4.857-4.9 0-2.709 2.172-4.9 4.857-4.9 2.684 0 4.856 2.191 4.856 4.9 0 2.71-2.172 4.9-4.856 4.9z"></path>
+        </svg>
+    </main>
+    <!-- modals -->
+        
+    <div  class="modal fade show d-flex" id="pomodoroDashboard" >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <p class="modal-title" id="staticBackdropLabel">Settings</p>
+            <button  aria-label="close button" type="button" class="btn-close" data-bs-dismiss="modal" ></button>
+          </div>
+          <form class="modal-body" >
+                <div class="timerSettings">
+                      <p class="timerHeader">
+                        TIME (MINUTES)
+                      </p>
+                      <div class="timerControllers">
+                        <div class="timerBreak">
+                            <p class="breakTitle">
+                              <label for="pomodoroInput"> pomodoro</label>
+                            </p>
+                            <div class="timerBreakController">
+                              <input   type="text" class="breakValue" value="30" id="pomodoroInput">
+                              <p class="validation idle">  
+                                <!-- replace idle with active to show validation -->
+                                please fill out this field.
+                              </p>
+                              <div class="arrows">
+                                <svg>
+                                  <path fill="none" stroke="#1E213F" stroke-opacity=".25" stroke-width="2" d="M1 6l6-4 6 4"/>
+                                </svg>
+                                <svg>
+                                  <path  fill="none" stroke="#1E213F" stroke-opacity=".25" stroke-width="2" d="M1 1l6 4 6-4"/>
+                                </svg>
+                              </div>
+                            </div>
+                        </div>
+                        <div class="timerBreak">
+                          <p class="breakTitle">
+                            <label for="shortBreakInput">short break</label>
+                          </p>
+                          <div class="timerBreakController">
+                            <input    type="text" class="breakValue" value="5" id="shortBreakInput">
+                            <p class="validation idle">
+                              please fill out this field.
+                            </p>
+                            <div class="arrows">
+                              <svg>
+                                <path fill="none" stroke="#1E213F" stroke-opacity=".25" stroke-width="2" d="M1 6l6-4 6 4"/>
+                              </svg>
+                              <svg>
+                                <path  fill="none" stroke="#1E213F" stroke-opacity=".25" stroke-width="2" d="M1 1l6 4 6-4"/>
+                              </svg>
+                            </div>
+                          </div>
+
+                        </div>
+                        <div class="timerBreak">
+                          <p class="breakTitle">
+                            <label for="longBreak">long break</label>
+                          </p>
+                          <div class="timerBreakController">
+                            <input    type="text" class="breakValue" value="20" id="longBreak">
+                            <p class="validation idle">
+                              please fill out this field.
+                            </p>
+                            <div class="arrows">
+                              <svg>
+                                <path fill="none" stroke="#1E213F" stroke-opacity=".25" stroke-width="2" d="M1 6l6-4 6 4"/>
+                              </svg>
+                              <svg>
+                                <path  fill="none" stroke="#1E213F" stroke-opacity=".25" stroke-width="2" d="M1 1l6 4 6-4"/>
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+                <div class="fontSettings">
+                    <p>
+                      Font
+                    </p>
+                    <div class="fonts">
+                        <button class="active font1" type="button">
+                          Aa
+                        </button>
+                        <button  class="idle font2" type="button">
+                          Aa
+                        </button>
+                        <button  class="idle font3" type="button">
+                          Aa
+                        </button>
+                    </div>
+                </div>
+                <div class="colorSettings">
+                    <p>
+                      Color
+                    </p>
+                    <div class="colors">
+                      <button aria-label="color1" class="active" type="button">
+                      </button>
+                      <button aria-label="color2" class="idle" type="button">
+                  
+                      </button>
+                      <button aria-label="color3" class="idle" type="button">
+                     
+                      </button>
+                    </div>
+                
+                </div>
+                <button  class="applyButton" type="button" >
+                  Apply
+                </button>
+            </form>
+
+        </div>
+      </div>
+    </div>
+<!-- Audio -->
+    <div class="audio">
+        <audio src="./assets/pomodoro_tracks/Most Beautiful Music Ever_ _Everdream_ by Epic Soul Factory (y2-mp3.com).mp3" loop ></audio>
+        <audio src="./assets/pomodoro_tracks/Hilary Woods - Inhaler (Official Music Video) (y2-mp3.com).mp3" loop></audio>
+        <audio src="./assets/pomodoro_tracks/Most Beautiful Music_ _Chasing Inspiration_ by Yair Albeg of Demented Sound Mafia (y2-mp3.com).mp3" loop></audio>
+        <audio src="./assets/pomodoro_tracks/mixkit-simple-game-countdown-921.wav"></audio>
+    </div>
+<!--  -->
+    <!--  -->
+    <script src="main.js"></script>
+</body>
+</html>

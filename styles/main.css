@@ -1,0 +1,504 @@
+@charset "UTF-8";
+h1, h2, h3, p {
+  margin: 0px;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+.modal .modal-body .fontSettings > div button, .modal .modal-body .colorSettings > div button, .modal .modal-body .fontSettings > div, .modal .modal-body .colorSettings > div, .modal .modal-body .timerSettings .timerControllers .timerBreak .timerBreakController, .modal .modal-body .timerSettings .timerControllers .timerBreak, .modal .modal-body .timerSettings .timerControllers, body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal .modal-body .fontSettings, .modal .modal-body .colorSettings, .modal .modal-body .timerSettings .timerControllers .timerBreak .timerBreakController .arrows, main .outerCircle .middleCirlce .innerCircle, main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pomodoroLogo {
+  font-size: 24px;
+}
+
+.pomodoroBreaks {
+  font-size: 12px;
+}
+
+.pomodoroTimer {
+  font-size: 65px;
+}
+
+.pomodoroController {
+  font-size: 14px;
+}
+
+.modal-title {
+  font-size: 20px;
+}
+
+.timerHeader {
+  font-size: 11px;
+}
+
+.breakTitle {
+  font-size: 12px;
+}
+
+.fonts {
+  font-size: 15px;
+}
+
+.fontSettings > p {
+  font-size: 11px;
+}
+
+.colorSettings > p {
+  font-size: 11px;
+}
+
+.breakValue {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  .pomodoroLogo {
+    font-size: 32px;
+  }
+  .pomodoroBreaks {
+    font-size: 14px;
+  }
+  .pomodoroTimer {
+    font-size: 100px;
+  }
+  .pomodoroController {
+    font-size: 16px;
+  }
+  .modal-title {
+    font-size: 28px;
+  }
+  .timerHeader {
+    font-size: 13px;
+  }
+  .breakTitle {
+    font-size: 12px;
+  }
+  .fonts {
+    font-size: 15px;
+  }
+  .fontSettings > p {
+    font-size: 13px;
+  }
+  .colorSettings > p {
+    font-size: 13px;
+  }
+  .breakValue {
+    font-size: 14px;
+  }
+}
+body {
+  background-color: #1E213F;
+  height: calc(100vh - 48px);
+  margin: 24px;
+}
+body.font1 {
+  font-family: "Kumbh Sans", sans-serif;
+}
+body.font2 {
+  font-family: "Roboto Slab", serif;
+}
+body.font3 {
+  font-family: "Space Mono", monospace;
+}
+
+main {
+  width: 100%;
+  height: inherit;
+}
+main .pomodoroLogo {
+  color: #D7E0FF;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+main .pomodoroBreaks {
+  display: flex;
+  align-items: center;
+  border-radius: 31.5px;
+  padding: 8px;
+  width: 100%;
+  max-width: 373px;
+  position: relative;
+  z-index: 5;
+  background-color: #161932;
+}
+main .pomodoroBreaks button.idle:hover {
+  opacity: 1;
+}
+main .pomodoroBreaks button.idle {
+  color: #D7E0FF;
+  opacity: 0.4;
+  background-color: unset;
+}
+main .pomodoroBreaks button.active {
+  color: #1E213F;
+  pointer-events: none;
+}
+main .pomodoroBreaks button.active.color1 {
+  background-color: #F87070;
+}
+main .pomodoroBreaks button.active.color2 {
+  background-color: #70F3F8;
+}
+main .pomodoroBreaks button.active.color3 {
+  background-color: #D881F8;
+}
+main .pomodoroController {
+  letter-spacing: 13.125px;
+  text-align: center;
+  cursor: pointer;
+}
+main .pomodoroController:hover {
+  color: #F87070;
+}
+main .pomodoroController.pending {
+  pointer-events: none;
+}
+main .outerCircle {
+  color: #D7E0FF;
+  width: 300px;
+  height: 300px;
+  padding: 16px;
+  border-radius: 50%;
+  background: linear-gradient(315deg, #2E325A 0%, #0E112A 100%);
+  box-shadow: -50px -50px 100px #272C5A, 50px 50px 100px #121530;
+}
+main .outerCircle .middleCirlce {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  border-radius: inherit;
+}
+main .outerCircle .middleCirlce .innerCircle {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  position: relative;
+  justify-content: center;
+  z-index: 5;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-color: #1E213F;
+}
+main .outerCircle .middleCirlce .innerCircle svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+main .outerCircle .middleCirlce .innerCircle svg .progressCircle {
+  stroke-width: 10px;
+  stroke-linecap: round;
+  transform: rotate(270deg);
+  transform-origin: 50% 50%;
+  stroke-dasharray: 747.699052;
+  stroke-dashoffset: 747.699052;
+}
+@media (min-width: 768px) {
+  main .outerCircle .middleCirlce .innerCircle svg .progressCircle {
+    stroke-dasharray: 1093.27424;
+    stroke-dashoffset: 1093.27424;
+  }
+}
+main .outerCircle .middleCirlce .innerCircle svg .progressCircle.color1 {
+  stroke: #F87070;
+}
+main .outerCircle .middleCirlce .innerCircle svg .progressCircle.color2 {
+  stroke: #70F3F8;
+}
+main .outerCircle .middleCirlce .innerCircle svg .progressCircle.color3 {
+  stroke: #D881F8;
+}
+@media (min-width: 768px) {
+  main .outerCircle {
+    width: 410px;
+    height: 410px;
+  }
+}
+@media (max-width: 375px) {
+  main .outerCircle {
+    width: 272px;
+    height: 272px;
+  }
+}
+main .outerCircle + svg {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  opacity: 0.4;
+}
+main .outerCircle + svg:hover {
+  opacity: 1;
+}
+main .outerCircle + svg path {
+  fill: #D7E0FF;
+}
+
+button {
+  outline: none;
+  border: none;
+  border-radius: 26.5px;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 18px 0px;
+  width: 100%;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  box-shadow: unset !important;
+}
+button.active {
+  cursor: unset;
+}
+
+.modal {
+  justify-content: center;
+  align-items: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.modal .modal-header {
+  padding: 24px;
+  border-bottom: 1px solid #E3E1E1;
+}
+@media (min-width: 768px) {
+  .modal .modal-header {
+    padding: 35px 40px;
+  }
+}
+.modal .modal-content {
+  font-weight: 700;
+  border: unset;
+  border-radius: 25px;
+}
+.modal .modal-dialog {
+  margin: 0 24px;
+  min-width: 279px;
+  position: relative;
+  top: -14px;
+  width: 100%;
+  max-width: 540px;
+}
+@media (min-width: 575px) {
+  .modal .modal-dialog {
+    margin: 1.75rem auto;
+  }
+}
+.modal .modal-body {
+  padding: 24px;
+  border-radius: 25px;
+  background-color: #FFFFFF;
+}
+.modal .modal-body button {
+  padding: 14px;
+}
+.modal .modal-body .timerSettings .timerHeader {
+  margin-bottom: 20px;
+  letter-spacing: 5px;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .modal .modal-body .timerSettings .timerHeader {
+    text-align: start;
+  }
+}
+.modal .modal-body .timerSettings .timerControllers {
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #E3E1E1;
+}
+@media (min-width: 768px) {
+  .modal .modal-body .timerSettings .timerControllers {
+    flex-direction: unset;
+  }
+}
+.modal .modal-body .timerSettings .timerControllers .timerBreak {
+  flex-grow: 1;
+  width: 100%;
+  justify-content: space-between;
+}
+@media (min-width: 768px) {
+  .modal .modal-body .timerSettings .timerControllers .timerBreak {
+    flex-direction: column;
+    width: unset;
+    align-items: flex-start;
+  }
+}
+.modal .modal-body .timerSettings .timerControllers .timerBreak .breakTitle {
+  margin-bottom: 5px;
+  color: #1E213F;
+  opacity: 0.4;
+}
+.modal .modal-body .timerSettings .timerControllers .timerBreak .timerBreakController {
+  position: relative;
+  width: 140px;
+  justify-content: space-between;
+  padding: 16px;
+  border-radius: 10px;
+  background-color: #EFF1FA;
+}
+@media (min-width: 768px) {
+  .modal .modal-body .timerSettings .timerControllers .timerBreak .timerBreakController {
+    width: 100%;
+  }
+}
+.modal .modal-body .timerSettings .timerControllers .timerBreak .timerBreakController input[type=text] {
+  width: 30px;
+  position: relative;
+  background-color: transparent;
+  border: 0;
+  font-weight: 700;
+  -moz-appearance: textfield;
+}
+.modal .modal-body .timerSettings .timerControllers .timerBreak .timerBreakController input[type=text]::-webkit-outer-spin-button, .modal .modal-body .timerSettings .timerControllers .timerBreak .timerBreakController input[type=text]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.modal .modal-body .timerSettings .timerControllers .timerBreak .timerBreakController .validation {
+  position: absolute;
+  color: #F87070;
+  width: 150px;
+  word-break: keep-all;
+  left: calc(50% - 75px);
+  font-size: 12px;
+  background-color: #FFFFFF;
+  padding: 10px;
+  z-index: 10;
+  box-shadow: 1px 1px 16px #eee, -1px -1px 16px #eee;
+  border-radius: 10px;
+  top: 100%;
+}
+.modal .modal-body .timerSettings .timerControllers .timerBreak .timerBreakController .validation::before {
+  content: "";
+  position: absolute;
+  left: calc(50% - 10px);
+  top: -20px;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-bottom-color: #FFFFFF;
+}
+@media (min-width: 768px) {
+  .modal .modal-body .timerSettings .timerControllers .timerBreak .timerBreakController .validation {
+    font-size: 13px;
+  }
+}
+.modal .modal-body .timerSettings .timerControllers .timerBreak .timerBreakController .validation.active {
+  display: block;
+}
+.modal .modal-body .timerSettings .timerControllers .timerBreak .timerBreakController .validation.idle {
+  display: none;
+}
+.modal .modal-body .timerSettings .timerControllers .timerBreak .timerBreakController svg {
+  width: 14px;
+  height: 7px;
+  cursor: pointer;
+}
+.modal .modal-body .timerSettings .timerControllers .timerBreak .timerBreakController svg:hover path {
+  stroke-opacity: 1;
+}
+.modal .modal-body .timerSettings .timerControllers .timerBreak .timerBreakController svg:first-child {
+  margin-bottom: 10px;
+}
+.modal .modal-body .fontSettings, .modal .modal-body .colorSettings {
+  padding: 12px 0px;
+  border-bottom: 1px solid #E3E1E1;
+}
+@media (min-width: 768px) {
+  .modal .modal-body .fontSettings, .modal .modal-body .colorSettings {
+    padding: 24px 0px;
+  }
+}
+.modal .modal-body .fontSettings > p, .modal .modal-body .colorSettings > p {
+  letter-spacing: 5px;
+  margin-bottom: 15px;
+}
+.modal .modal-body .fontSettings > div, .modal .modal-body .colorSettings > div {
+  gap: 16px;
+}
+.modal .modal-body .fontSettings > div button, .modal .modal-body .colorSettings > div button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.modal .modal-body .fontSettings > div button.idle:hover, .modal .modal-body .colorSettings > div button.idle:hover {
+  outline: 1px solid #EFF1FA;
+  outline-offset: 5px;
+}
+@media (min-width: 768px) {
+  .modal .modal-body .fontSettings, .modal .modal-body .colorSettings {
+    flex-direction: row;
+  }
+  .modal .modal-body .fontSettings > p, .modal .modal-body .colorSettings > p {
+    margin-bottom: unset;
+  }
+}
+.modal .modal-body .fontSettings > div button.active {
+  background-color: #161932;
+  color: #FFFFFF;
+  pointer-events: none;
+}
+.modal .modal-body .fontSettings > div button.idle {
+  background-color: #EFF1FA;
+  color: #1E213F;
+  opacity: 0.73;
+  cursor: pointer;
+}
+.modal .modal-body .fontSettings > div button.font1 {
+  font-family: "Kumbh Sans", sans-serif;
+}
+.modal .modal-body .fontSettings > div button.font2 {
+  font-family: "Roboto Slab", serif;
+}
+.modal .modal-body .fontSettings > div button.font3 {
+  font-family: "Space Mono", monospace;
+}
+.modal .modal-body .colorSettings {
+  border: 0;
+}
+.modal .modal-body .colorSettings > div button.active::before {
+  content: "✓";
+}
+.modal .modal-body .colorSettings > div button:nth-child(1) {
+  background-color: #F87070;
+}
+.modal .modal-body .colorSettings > div button:nth-child(2) {
+  background-color: #70F3F8;
+}
+.modal .modal-body .colorSettings > div button:last-child {
+  background-color: #D881F8;
+}
+.modal .modal-body .applyButton {
+  background-color: #F87070;
+  position: absolute;
+  width: 140px;
+  padding: 16px 46px;
+  color: #FFFFFF;
+  left: calc(50% - 70px);
+}
+.modal .modal-body .applyButton:hover {
+  color: #1E213F;
+}/*# sourceMappingURL=main.css.map */

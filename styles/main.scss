@@ -1,0 +1,461 @@
+@use "./_designVariables" as *;
+h1,h2,h3,p{
+    margin: 0px;
+}
+div{
+    box-sizing: border-box;
+}
+%centerElementsInRow{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+%centerElementsInColumns{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+// function to set fontSize for all items
+@each $class,$fontSize in setFontSize($mobile){
+    .#{$class}{
+        font-size: $fontSize;
+    }
+}
+@media(min-width:$tablet){
+    @each $class,$fontSize in setFontSize($tablet){
+        .#{$class}{
+            font-size: $fontSize;
+        }
+    }
+}
+// -------------------------------------------------
+// mixin to create triange 
+@mixin triangle($width,$color){
+ 
+    &::before{
+        content:"";
+        position: absolute;
+        left: calc(50% - $width);
+        top:calc($width * -2);
+        width: 0;
+        height: 0;
+        border: $width solid transparent;
+        border-bottom-color: $color;
+    }
+}
+// 
+@mixin fontClasses(){
+    $counter:1;
+    @each $font,$alternativeFont in $fontFamilies{
+        &.font#{$counter}{
+            font-family: '#{$font}',#{$alternativeFont};
+            $counter:$counter+1;
+        }
+    }
+}
+@mixin colorClasses($element){
+    $counter:1;
+    @each $color in $pomodoroAllColors {
+        @if $element=="SVG"{
+            &.color#{$counter}{
+                stroke: $color;
+            }
+        }
+        @else{
+            &.color#{$counter}{
+            background-color: $color;
+            }
+        }
+        $counter:$counter+1;
+    }
+}
+body{
+    @extend %centerElementsInRow;
+    background-color:$darkBgColor ;
+    height: calc(100vh - 48px);
+    margin: 24px;
+    @include fontClasses();
+
+}
+main{
+    width: 100%;
+    height: inherit;
+    @extend %centerElementsInColumns;
+    .pomodoroLogo{
+        color:$pomodoroFontColor;
+        user-select: none;
+    }
+    .pomodoroBreaks{
+        display: flex;
+        align-items: center;
+        border-radius: 31.5px;
+        padding: 8px;
+        width: 100%;
+        max-width: 373px;
+        position: relative;
+        z-index: 5;
+        background-color:$activeFont;
+        button{
+            &.idle:hover{
+             opacity: 1;   
+            }
+            &.idle{
+                color:$pomodoroFontColor;
+                opacity: 0.4;
+                background-color: unset;
+            }
+            &.active{
+                color:$darkBgColor;
+                pointer-events: none;
+                @include colorClasses("");
+            }
+
+        }
+    }
+    .pomodoroController{
+        letter-spacing: 13.125px;
+        text-align: center;
+        cursor: pointer;
+        &:hover{
+            color:$pomodoroSans;
+        }
+        &.pending{
+            pointer-events: none;
+        }
+    }
+    .outerCircle{
+        color: $pomodoroFontColor;
+        width:300px;
+        height:300px;
+        padding: 16px;
+        border-radius: 50%;
+        background: linear-gradient(315deg, #2E325A 0%, #0E112A 100%);
+        box-shadow: -50px -50px 100px #272C5A, 50px 50px 100px #121530;
+        .middleCirlce{
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            border-radius: inherit;
+
+            .innerCircle{
+                width: 100%;
+                height: 100%;
+                border-radius: inherit;
+                position: relative;
+                justify-content: center;
+                z-index: 5;
+                user-select: none;
+                background-color: $darkBgColor;
+                @extend %centerElementsInColumns;
+                svg{
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    z-index: -1;
+                    .progressCircle{
+                        stroke-width: 10px;
+                        stroke-linecap: round;
+                        transform: rotate(270deg);
+                        transform-origin: 50% 50%;
+                        @media(min-width:$tablet){
+                            stroke-dasharray: 1093.27424; //circumference of circle * 2 (348 * 2)
+                            stroke-dashoffset:1093.27424; //
+                        }
+                        stroke-dasharray: 747.699052; //circumference of circle * 2 (238 * 2)
+                        stroke-dashoffset:747.699052;
+              
+                        @include colorClasses("SVG");
+                    }
+                }
+                }
+            
+        }
+        @media(min-width:$tablet){
+            width:410px;
+            height:410px;
+        
+        }
+        @media(max-width:$mobile){
+            width:272px;
+            height:272px;
+        }
+    }
+    .outerCircle{
+        +svg{
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            opacity: 0.4;
+            &:hover{
+                opacity: 1;
+            }
+            path{
+                fill: $pomodoroFontColor;
+            }
+        }
+    }
+}
+
+button{
+    outline: none;
+    border: none;
+    border-radius: 26.5px;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: $fontWeight1;
+    cursor: pointer;
+    padding: 18px 0px;
+    width: 100%;
+    user-select: none;
+    box-shadow: unset !important;
+    &.active{
+        cursor: unset;
+    }
+}
+.modal{
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    .modal-header{
+        padding: 24px;
+        border-bottom:1px solid #E3E1E1 ;
+        @media(min-width:$tablet){
+            padding: 35px 40px;
+        }
+    }
+
+    .modal-content{
+        font-weight:$fontWeight1;
+        border: unset;
+        border-radius: 25px;
+
+    }
+    .modal-dialog{
+            @media(min-width:575px){
+                margin:1.75rem auto ;
+            }
+            margin: 0 24px;
+            min-width:279px;
+            position: relative;
+            top: -14px;
+            width: 100%;
+            max-width:540px;
+    }
+    .modal-body{
+        padding: 24px;
+        border-radius: 25px;
+        background-color: $whiteBgColor;
+    
+        button{
+            padding: 14px;
+
+        }
+        .timerSettings{
+            .timerHeader{
+                margin-bottom: 20px;
+                letter-spacing: 5px;
+                text-align: center;
+                @media(min-width:$tablet){
+                    text-align: start;
+                }
+            }
+            .timerControllers{
+                @extend %centerElementsInRow;
+                flex-direction: column;
+                @media(min-width:$tablet){
+                    flex-direction: unset;
+                }
+                justify-content: space-between;
+                gap: 20px;
+                padding-bottom: 24px;
+                border-bottom: 1px solid #E3E1E1;
+                .timerBreak{
+           
+                    flex-grow: 1;
+                    @extend %centerElementsInRow ;
+                    width: 100%;
+                    @media(min-width:$tablet){
+                        flex-direction: column;
+                        width: unset;
+                      align-items: flex-start;
+                    }
+                    justify-content: space-between;
+     
+                    .breakTitle{
+                        margin-bottom: 5px;
+                        color:$darkBgColor;
+         
+                        opacity: 0.4;
+                    }
+                    .timerBreakController{
+                        position: relative;
+                        @extend %centerElementsInRow;
+                        width: 140px;
+                        @media(min-width:$tablet){
+                            width: 100%;
+                            
+                        }
+                        justify-content: space-between;
+                        padding: 16px;
+                        border-radius: 10px;
+                        background-color:$disabledFont ;
+                        input[type=text] {
+                            width: 30px;
+                            position: relative;
+                            background-color: transparent;
+                            border: 0;
+                            font-weight: $fontWeight1;
+                            -moz-appearance: textfield;
+                            &::-webkit-outer-spin-button,&::-webkit-inner-spin-button{
+                                -webkit-appearance: none;
+                                margin: 0;
+                            }
+                            
+                        }
+                        .validation {
+                            position: absolute;
+                            @include triangle(10px,$whiteBgColor);
+                            color: $pomodoroSans;
+                            width: 150px;
+                            word-break:keep-all;
+                            left: calc(50% - 75px);
+                            font-size: 12px;
+                            background-color: $whiteBgColor;
+                            padding: 10px;
+                        
+                            z-index: 10;
+                            box-shadow: 1px 1px 16px #eee,-1px -1px 16px #eee;
+                            border-radius: 10px;
+                            @media(min-width:$tablet){
+                                font-size: 13px;
+                            }
+                            top: 100%;
+                            &.active{
+                                display: block;
+                            }
+                            &.idle{
+                                display: none;
+                            }
+                        }
+                        .arrows{
+                            @extend %centerElementsInColumns;
+                           
+                        }
+                        svg{
+                            width: 14px;
+                            height: 7px;
+                            &:hover{
+                              path{
+                                stroke-opacity: 1;
+                              }
+                            }
+                            &:first-child{
+                                margin-bottom: 10px;
+                            }
+                            cursor: pointer;
+                        }
+   
+                        
+                    }
+                }
+
+            }
+        }
+        .fontSettings,.colorSettings{
+            padding: 12px 0px;
+            @media(min-width:$tablet){
+                padding: 24px 0px;
+            }
+            border-bottom: 1px solid #E3E1E1;
+            @extend %centerElementsInColumns;
+            >p{
+                letter-spacing: 5px;
+                margin-bottom: 15px;
+            }
+            >div{
+                gap: 16px;
+                @extend %centerElementsInRow;
+                button{
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    &.idle:hover{
+                        outline: 1px solid $disabledFont;
+                        outline-offset: 5px;
+
+                    }
+                    @extend %centerElementsInRow;
+                }
+            }
+            @media(min-width:$tablet){
+               flex-direction: row;
+                >p{
+                    margin-bottom:unset ;
+                }
+            }
+        }
+        .fontSettings {
+            >div{
+              
+               button{
+                    &.active{
+                        background-color:$activeFont ;
+                        color:$whiteBgColor;
+                        pointer-events: none;
+                    }
+                    &.idle{
+                        background-color:$disabledFont ;
+                        color:$darkBgColor;
+                       
+                        opacity: 0.73;
+                        cursor: pointer;
+                    }
+                    
+                    @include fontClasses()
+                    
+   
+                }
+
+            }
+        }
+        .colorSettings{
+       
+            border: 0;
+            >div{
+                button{                    
+                    &.active{
+                        &::before{
+                            content:"✓";
+                        }
+                    }
+                    &:nth-child(1){
+                        background-color:$pomodoroSans;
+                    }
+                    &:nth-child(2){
+                        background-color: $pomodoroSerif;
+                    }
+                       
+                    &:last-child{
+                        background-color: $pomodoroMono;
+                    }
+                    
+                }
+                
+
+            }
+       
+        }
+        .applyButton{
+            background-color: $pomodoroSans;
+            position: absolute;
+            width: 140px;
+            padding: 16px 46px;
+            color: $whiteBgColor;
+            &:hover{
+                color: $darkBgColor;
+            }
+            left: calc(50% - 70px);
+        }
+    }
+}

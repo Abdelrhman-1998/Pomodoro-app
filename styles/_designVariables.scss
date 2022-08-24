@@ -1,0 +1,88 @@
+// colors (8)
+
+    // pomodoro colors 
+
+    $pomodoroSans:#F87070;
+    $pomodoroSerif:#70F3F8;
+    $pomodoroMono:#D881F8;
+    $pomodoroFontColor:#D7E0FF;
+    $pomodoroAllColors:$pomodoroSans,$pomodoroSerif,$pomodoroMono; // selection colors of dashboard
+    // pomodoro colors 
+
+    //background color 
+
+    $darkBgColor:#1E213F;
+    $whiteBgColor:#FFFFFF;
+
+    //background color 
+
+    // font selection buttons
+
+        $activeFont:#161932;
+        $disabledFont:#EFF1FA;
+
+    // font selection buttons
+
+
+// -----------------------------------------
+
+// fonts (3)
+
+    // font family
+
+        $fontFamilies:
+        ('Kumbh Sans':'sans-serif','Roboto Slab':'serif','Space Mono':'monospace');
+
+    // font weight
+
+        $fontWeight1:700;
+        $fontWeight2:400;
+
+    // font-size desktop and tablets
+
+
+// -----------------------------------------
+  
+// media 
+
+    $mobile:375px;
+    $mobileL:425px;
+    $tablet:768px;
+    $desktop:1024px;
+    
+// ----------------------------------
+
+@function setFontSize($media){
+    $fsLogo:24px;
+    $fsSwitchButtons:12px;
+    $fsTimer:65px;
+    $fsTimerController:14px;
+    $fsDashboardMainHeader:20px;
+    $fsDashboardHeaders:11px;
+    $fsBreakTitles:12px;
+    $fsFontsSelections:15px;
+    $fsNumbers:14px;
+    $fsSubmitBtn:16px;
+    @if $media==$desktop or $media==$tablet{
+        $fsLogo:32px ;
+        $fsSwitchButtons:14px ;
+        $fsTimer:100px;
+        $fsTimerController:16px ;
+        $fsDashboardMainHeader:28px ;
+        $fsDashboardHeaders:13px ;
+    }
+    $myFonts:("pomodoroLogo":$fsLogo,
+        "pomodoroBreaks":$fsSwitchButtons,
+        "pomodoroTimer":$fsTimer,
+        "pomodoroController":$fsTimerController,
+        "modal-title":$fsDashboardMainHeader,
+        "timerHeader":$fsDashboardHeaders,
+        "breakTitle":$fsBreakTitles,
+        "fonts":$fsFontsSelections,
+        "fontSettings >p": $fsDashboardHeaders,
+        "colorSettings > p":$fsDashboardHeaders,
+        "breakValue":$fsNumbers
+    );
+    @return $myFonts
+}
+
