@@ -17,6 +17,7 @@ let submissionData = { "pomodoroBreaks": [{ "key": 30 }, { "key": 5 }, { "key": 
 const circle = document.querySelector(".progressCircle");
 const circleStyles = getComputedStyle(circle);
 const circleCircumference = +circleStyles.strokeDasharray.split("px")[0];
+const innerCircle = document.querySelector(".innerCircle");
 let submissionStatus = false;
 let pomodoroData = [
     { "minutes": "30", "seconds": "00", "text": "Start", "progressBar": circleCircumference },
@@ -171,10 +172,18 @@ pomodoroBreaks.forEach((ele, index) => {
         // display data
         fillPomodoroData(index);
         // -----
+        const cursor = getComputedStyle(pomodoroController).cursor;
+        if (pomodoroController.classList.contains("pending")) {
+            innerCircle.classList.remove("pointer");
+        }
+        else {
+            innerCircle.classList.add("pointer");
+        }
     });
 });
-pomodoroController.addEventListener("click", () => {
+pomodoroController.addEventListener("click", (e) => {
     // change button status start or pending or completed or restart
+    e.stopPropagation();
     if (pomodoroController.textContent.trim().toLowerCase() === "start") {
         if (turnIndex === currentActiveIndex) {
             pomodoroData[turnIndex].text = "Pause";
@@ -209,6 +218,9 @@ pomodoroController.addEventListener("click", () => {
         turnIndex = 0;
         pomodoroBreaks[0].click();
     }
+});
+innerCircle.addEventListener("click", (e) => {
+    pomodoroController.click();
 });
 function incrementInput(val) {
     let myval = +val;

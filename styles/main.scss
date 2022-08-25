@@ -147,6 +147,10 @@ main{
                 z-index: 5;
                 user-select: none;
                 background-color: $darkBgColor;
+            
+                &.pointer{
+                    cursor: pointer;
+                }
                 @extend %centerElementsInColumns;
                 svg{
                     position: absolute;

@@ -196,6 +196,9 @@ main .outerCircle .middleCirlce .innerCircle {
           user-select: none;
   background-color: #1E213F;
 }
+main .outerCircle .middleCirlce .innerCircle.pointer {
+  cursor: pointer;
+}
 main .outerCircle .middleCirlce .innerCircle svg {
   position: absolute;
   width: 100%;
