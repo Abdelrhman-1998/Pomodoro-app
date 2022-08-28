@@ -252,6 +252,9 @@ main .outerCircle + svg:hover {
 main .outerCircle + svg path {
   fill: #D7E0FF;
 }
+main .audio {
+  position: absolute;
+}
 
 button {
   outline: none;
